@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
+    @users = User.all
   end
 
   def index
@@ -28,6 +29,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def follow
+    @user = User.find(params[:id])
+    @users = User.all
+  end
+  
+  def follower
+    @user = User.find(params[:id])
+    @users = User.all
+  end  
+  
   private
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
