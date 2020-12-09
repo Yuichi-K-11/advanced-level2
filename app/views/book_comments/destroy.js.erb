@@ -1,0 +1,2 @@
+$("#book_comments").html("<%= j(render 'book_comments/comments', { book: @book }) %>")
+$('#book_table_<%= @book.id %>').html("<%= j(render 'book_comments/book_table', { book: @book }) %>")
