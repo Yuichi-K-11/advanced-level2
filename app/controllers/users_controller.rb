@@ -39,6 +39,13 @@ class UsersController < ApplicationController
     @users = User.all
   end  
   
+  def confirm!
+    super
+    if confirmed?
+      UserMailer.completion_of_registration(self).deliver
+    end
+  end
+  
   private
   def zipedit
   params.require(:user).permit(:postcode, :prefecture_name, :address_city, :address_street, :address_building)
